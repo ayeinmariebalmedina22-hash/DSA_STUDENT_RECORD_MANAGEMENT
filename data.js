@@ -1,0 +1,50 @@
+let ladsmerchs = [
+    {
+        id: 1,
+        productName: "LADS Plushies",
+        price: 20,
+        currency: "USD", 
+        image: "Product Images/product1.jpg",
+        Availability: true,
+    },
+    {
+        id: 2,
+        productName: "LADS Keychains (Cat Version)",
+        price: 15,
+        currency: "USD",
+        image: "Product Images/product2.jpg",
+        Availability: true,
+    },
+    {   
+        id: 3,
+        productName: "LADS Plushies",
+        price: 25,
+        currency: "USD",
+        image: "Product Images/product3.jpg",
+        Availability: true,
+    },
+    {
+        id: 4,
+        productName: "LADS Keychain (Figurine Version)",
+        price: 20,
+        currency: "USD",
+        image: "Product Images/product4.jpg",
+        Availability: true,
+    },
+    {
+        id: 5,
+        productName: "LADS Keychain (Cat Plushie Version)",
+        price: 30,
+        currency: "USD",
+        image: "Product Images/product5.jpg",
+        Availability: true,
+    },
+    {
+        id: 6,
+        productName: "LADS Polaroid Cards (Spring Banner Edition)",
+        price: 10,
+        currency: "USD",
+        image: "Product Images/product6.jpg",
+        Availability: true,
+    }
+];

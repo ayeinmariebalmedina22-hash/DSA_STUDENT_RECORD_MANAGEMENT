@@ -1,0 +1,283 @@
+
+/* --- Base Styles & Theme --- */
+body {
+  font-family: sans-serif;
+  background-color: rgb(199, 152, 160); 
+  color: #fff; 
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+}
+
+.title {
+    font-family: 'Bungee', cursive; 
+    font-weight: 900;              
+    font-size: xx-large;
+    margin: 0;
+     text-shadow: 2px 2px 8px rgba(53, 53, 53, 0.842);
+}
+
+.container{
+    width: 900px;
+    max-width: 90vw;
+    margin: auto;
+    text-align: center;
+    transition: transform .5s;
+}
+
+svg {
+    width: 30px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 10px;
+}
+
+header .icon-cart {
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+}
+
+header .icon-cart span {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    background-color: #fff; 
+    justify-content: center;
+    align-items: center;
+    color: rgb(184, 94, 109);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    right: -20px;
+}
+
+/* --- THE PRODUCT AREA STYLES --- */
+.ladsmerchs {
+    display: grid;
+    color: rgb(180, 71, 89);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Style for each product card */
+.ladsmerchs .item {
+    background-color: #fae0ed; 
+    font-size: large;
+    padding: 20px;
+    border-radius: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+
+.ladsmerchs .item img {
+    border-radius: 15px; 
+    width: 90%; 
+    height: auto;
+}
+
+/* Text styles within card */
+.ladsmerchs .item h2 {
+    font-weight: 500;
+    font-size: medium;
+    margin-top: 15px;
+    
+    min-height: 3em; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ladsmerchs .item .price {
+    font-size: medium;
+    color: rgb(180, 71, 89);
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* Add To Cart Button Styles */
+.ladsmerchs .item button {
+    background-color: rgb(184, 94, 109);
+    color: #fff;
+    padding: 8px 15px; 
+    margin-top: 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: x-small;
+    text-transform: uppercase;
+    padding: 10px 20px;    
+    font-size: 0.8rem;      
+    font-weight: 600;      
+    width: 80%;             
+    transition: 0.3s;       
+}
+
+.ladsmerchs .item button:hover {
+    background-color: rgb(150, 70, 85);
+    transform: scale(1.05); 
+}
+
+/* --- SHOPPING CART TAB STYLES --- */
+.cartTab {
+    width: 400px;
+    background-color: #fceef5; 
+    color: rgb(184, 94, 109);
+    position: fixed;
+    inset: 0 -400px 0 auto;
+    display: grid;
+    grid-template-rows: 70px 1fr 50px 70px;
+    transition: .5s;
+    z-index: 100;
+}
+
+body.showCart .cartTab {
+    inset: 0 0 0 auto;
+}
+
+body.showCart .container {
+    transform: translateX(-250px);
+}
+
+.cartTab h1 {
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.listCart {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.listCart::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Styles for single item in cart */
+
+.cartTab .listCart .item {
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eecbd8; 
+}
+
+.cartTab .listCart .item img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+.cartTab .listCart .item .name {
+    font-size: medium;
+}
+
+/* Quantity Control Styles */
+
+.listCart .quantity span {
+    display: inline-block;
+    width: 25px; 
+    height: 25px;
+    line-height: 25px; 
+    background-color: rgb(184, 94, 109); 
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.listCart .quantity span:nth-child(2) {
+    background-color: transparent;
+    color: rgb(184, 94, 109);
+    width: auto;
+    padding: 0 5px;
+}
+
+.listCart .item:nth-child(even) {
+    background-color: #fae0ed; 
+}
+
+/* Total Amount Area */
+.totalAmountArea {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fceef5; 
+    border-top: 1px solid #eecbd8;
+    font-weight: bold;
+    color: rgb(180, 71, 89);
+}
+
+/* Cart Tab Button Styles Area */
+
+.cartTab .btn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 70px;
+    flex-shrink: 0; 
+}
+
+.cartTab .btn button {
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 1.1rem;     
+    font-weight: 600;      
+    transition: all 0.3s ease; 
+}
+
+.cartTab .btn .close {
+    background-color: whitesmoke;
+    color: rgb(184, 94, 109);
+}
+
+.cartTab .btn .close:hover {
+    background-color: #eeeeee; 
+    color: rgb(150, 70, 85);   
+    letter-spacing: 1px;       
+}
+
+.cartTab .btn .checkout {
+    background-color: rgb(184, 94, 109);
+    color: white;
+}
+
+.cartTab .btn .checkout:hover {
+    background-color: rgb(150, 70, 85); 
+    filter: brightness(1.1);    
+    letter-spacing: 1px;        
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1); 
+}
+
+.cartTab .btn button:active {
+    transform: scale(0.98); 
+}
+
+/* warning message area*/
+
+.empty-message {
+    flex-grow: 1;           
+    display: flex;
+    align-items: center;    
+    justify-content: center; 
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    color: rgb(154, 154, 154);
+    opacity: 0.6;
+    text-align: center;
+    padding: 20px;
+}
