@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f5fa;
+    color: #333;
+}
+
+header {
+    background-color: rgb(39, 37, 37);
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.form-section,
+.records-section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: rgb(39, 37, 37);
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+button {
+    padding: 11px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(39, 37, 37);
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: rgb(39, 37, 37);
+}
+
+form button {
+    grid-column: span 2;
+}
+
+.cancel-btn {
+    background-color: #777;
+}
+
+.sort-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    padding: 13px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: rgb(39, 37, 37);
+    color: white;
+}
+
+tr:hover {
+    background-color: #929292;
+}
+
+.edit-btn {
+    background-color: #585349;
+    margin: 3px;
+}
+
+.delete-btn {
+    background-color: #302b2b;
+    margin: 3px;
+}
+
+#recordCount {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+footer {
+    background-color: rgb(39, 37, 37);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    form button {
+        grid-column: span 1;
+    }
+
+    .container {
+        width: 95%;
+    }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Student Record Management System</h1>
+        <p>Manage student information easily</p>
+    </header>
+
+    <main class="container">
+
+        <section class="form-section">
+            <h2 id="formTitle">Add Student Record</h2>
+
+            <form id="studentForm">
+                <input type="text" id="studentId"
+                    placeholder="Student ID" required>
+
+                <input type="text" id="studentName"
+                    placeholder="Student Name" required>
+
+                <input type="number" id="studentAge"
+                    placeholder="Age" min="1" required>
+
+                <input type="text" id="studentCourse"
+                    placeholder="Course" required>
+
+                <input type="number" id="studentGpa"
+                    placeholder="GPA (0.00 - 4.00)"
+                    min="0" max="4" step="0.01" required>
+
+                <button type="submit" id="submitButton">
+                    Add Student
+                </button>
+
+                <button type="button" id="cancelButton"
+                    class="cancel-btn" hidden>
+                    Cancel
+                </button>
+            </form>
+        </section>
+
+        <section class="records-section">
+            <h2>Student Records</h2>
+
+            <input type="text" id="searchInput"
+                placeholder="Search by ID or student name...">
+
+            <div class="sort-buttons">
+                <button onclick="sortById()">Sort by ID</button>
+                <button onclick="sortByName()">Sort by Name</button>
+                <button onclick="sortByGpa()">Sort by GPA</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Course</th>
+                            <th>GPA</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTable">
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="recordCount">Total Students: 0</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Student Record Management System</p>
+    </footer>
+
+    <script src="funtion.js"></script>
+</body>
+</html>
