@@ -3,6 +3,22 @@ let students = JSON.parse(localStorage.getItem("students")) || [];
 
 let editID = "";
 
+function capitalizeName(input) {
+    input.value = input.value
+        .toLowerCase()
+        .replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
+// Apply capitalization to First Name
+document.getElementById("studentFirstName").addEventListener("input", function() {
+    capitalizeName(this);
+});
+
+// Apply capitalization to Last Name
+document.getElementById("studentLastName").addEventListener("input", function() {
+    capitalizeName(this);
+});
+
 // Display student records
 function displayStudents() {
     let table = document.getElementById("studentTable");
@@ -13,7 +29,8 @@ function displayStudents() {
         table.innerHTML += `
             <tr>
                 <td>${students[i].id}</td>
-                <td>${students[i].name}</td>
+                <td>${students[i].lastname}</td>
+                <td>${students[i].firstname}</td>
                 <td>${students[i].age}</td>
                 <td>${students[i].course}</td>
                 <td>${students[i].gpa.toFixed(2)}</td>
@@ -31,19 +48,27 @@ function displayStudents() {
     localStorage.setItem("students", JSON.stringify(students));
 }
 
+
 // Add or Update Student
 document.getElementById("studentForm").onsubmit = function(event) {
     event.preventDefault();
 
     let id = document.getElementById("studentId").value;
-    let name = document.getElementById("studentName").value;
+    let lastname = document.getElementById("studentLastName").value;
+    let firstname = document.getElementById("studentFirstName").value;
     let age = Number(document.getElementById("studentAge").value);
     let course = document.getElementById("studentCourse").value;
     let gpa = Number(document.getElementById("studentGpa").value);
 
+     //Check age
+    if (age < 17 || age > 25) {
+        alert("Age must not be less than 17 or greater than 25.");
+        return;
+    }
+
     // Check GPA
-    if (gpa < 0 || gpa > 4) {
-        alert("GPA must be between 0.00 and 4.00.");
+    if (gpa < 1 || gpa > 4) {
+        alert("GPA must be between 1.00 and 4.00.");
         return;
     }
 
@@ -58,7 +83,8 @@ document.getElementById("studentForm").onsubmit = function(event) {
     // Create student record
     let student = {
         id: id,
-        name: name,
+        lastname: lastname,
+        firstname: firstname,
         age: age,
         course: course,
         gpa: gpa
@@ -93,7 +119,8 @@ function editStudent(id) {
         if (students[i].id === id) {
 
             document.getElementById("studentId").value = students[i].id;
-            document.getElementById("studentName").value = students[i].name;
+            document.getElementById("studentLastName").value = students[i].lastname;
+            document.getElementById("studentFirstName").value = students[i].firstname;
             document.getElementById("studentAge").value = students[i].age;
             document.getElementById("studentCourse").value = students[i].course;
             document.getElementById("studentGpa").value = students[i].gpa;
@@ -125,17 +152,24 @@ function deleteStudent(id) {
 
 // Search Student by Name
 document.getElementById("searchInput").addEventListener("input", function() {
-    let search = this.value.toLowerCase();
+    let search = this.value.toLowerCase().trim();
 
     let table = document.getElementById("studentTable");
     table.innerHTML = "";
 
     for (let i = 0; i < students.length; i++) {
-        if (students[i].name.toLowerCase().includes(search)) {
+        let fullName = students[i].firstname.toLowerCase() + " " +
+                       students[i].lastname.toLowerCase();
+
+        if (students[i].firstname.toLowerCase().includes(search) ||
+            students[i].lastname.toLowerCase().includes(search) ||
+            fullName.includes(search)) {
+
             table.innerHTML += `
                 <tr>
                     <td>${students[i].id}</td>
-                    <td>${students[i].name}</td>
+                    <td>${students[i].lastname}</td>
+                    <td>${students[i].firstname}</td>
                     <td>${students[i].age}</td>
                     <td>${students[i].course}</td>
                     <td>${students[i].gpa.toFixed(2)}</td>
@@ -161,7 +195,14 @@ function sortById() {
 // Sort by Student Name
 function sortByName() {
     students.sort(function(a, b) {
-        return a.name.localeCompare(b.name);
+    let lastNameCompare = a.lastname.localeCompare(b.lastname);
+
+        if (lastNameCompare === 0) {
+            return a.firstname.localeCompare(b.firstname);
+        }
+
+        return lastNameCompare;
+
     });
 
     displayStudents();

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Record Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="systemStyle.css">
 </head>
 <body>
 
@@ -20,20 +20,28 @@
 
             <form id="studentForm">
                 <input type="text" id="studentId"
-                    placeholder="Student ID" required>
+                    placeholder="Student ID" maxlength="6" required>
 
-                <input type="text" id="studentName"
-                    placeholder="Student Name" required>
+                <input type="text" id="studentFirstName"
+                    placeholder="Student First Name" required>
 
                 <input type="number" id="studentAge"
-                    placeholder="Age" min="1" required>
+                    placeholder="Age" min="13" max="30" required>
 
-                <input type="text" id="studentCourse"
-                    placeholder="Course" required>
+                <input type="text" id="studentLastName"
+                    placeholder="Student Last Name" required>
+
+                <select id="studentCourse" required>
+                    <option value="" disabled selected>Select Course</option>
+                    <option value="BSIT">BSIT</option>
+                    <option value="BSCS">BSCS</option>
+                    <option value="ACT">ACT</option>
+                </select>
+
 
                 <input type="number" id="studentGpa"
-                    placeholder="GPA (0.00 - 4.00)"
-                    min="0" max="4" step="0.01" required>
+                    placeholder="GPA (1.00 - 4.00)"
+                    min="1" max="4" step="0.01" required>
 
                 <button type="submit" id="submitButton">
                     Add Student
@@ -52,10 +60,10 @@
             <input type="text" id="searchInput"
                 placeholder="Search by ID or student name...">
 
-            <div class="sort-buttons">
-                <button onclick="sortById()">Sort by ID</button>
+           <div class="sort-buttons">
+                <button onclick="sortByID()">Sort by ID</button>
                 <button onclick="sortByName()">Sort by Name</button>
-                <button onclick="sortByGpa()">Sort by GPA</button>
+                <button onclick="sortByGPA()">Sort by GPA</button>
             </div>
 
             <div class="table-container">
@@ -63,7 +71,8 @@
                     <thead>
                         <tr>
                             <th>Student ID</th>
-                            <th>Name</th>
+                            <th>Last Name</th>
+                            <th>First Name</th>
                             <th>Age</th>
                             <th>Course</th>
                             <th>GPA</th>
@@ -85,6 +94,6 @@
         <p>Student Record Management System</p>
     </footer>
 
-    <script src="funtion.js"></script>
+    <script src="function.js"></script>
 </body>
 </html>
